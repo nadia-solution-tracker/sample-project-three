@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<br/>
+<!--Header-->
+<header id="heading"></header>
+<br/>
+   <main class="my-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">LOGIN/SIGN-IN</div>
+                        <div class="card-body">
+                            <form method=POST action="{{ url_for('login') }}">
+                                
+                                <div class="form-group row">
+                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="user_name" placeholder="Username">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                    <div class="col-md-6">
+                                        <input type="password" class="form-control" name="pass" placeholder="Password">
+                                    </div>
+                                </div>
+                               
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-info btn-block" onclick="{{ url_for( 'login')}} " )>
+                                       Signin 
+                                        </button>
+                                    </div>
+                                     <div class="center">
+                                            Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>.
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+
+<br/>
+{% endblock %}

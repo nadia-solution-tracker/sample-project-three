@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/>
+<!--Header-->
+<header id="heading"></header>
+    <br/>
+    <main class="my-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">ADD RECIPE</div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ url_for('insert_recipe') }}">
+                                
+                                <!--Recipe Name-->
+                                <div class="form-group row">
+                                    <label for="recipe_name" class="col-md-4 col-form-label text-md-right"><i class="material-icons">restaurant</i></label>
+                                    <div class="col-md-6">
+                                        <input id="recipe_name" class="form-control" name="recipe_name" type="text" class="validate" placeholder="Recipe Name">
+                                    </div>
+                                </div>
+
+                                <!--Short Description-->
+                                <div class="form-group row">
+                                    <label for="short_description" class="col-md-4 col-form-label text-md-right"><i class="material-icons">short_text</i></label>
+                                    <div class="col-md-6">
+                                        <input id="short_description" class="form-control" name="short_description" type="text" class="validate" placeholder="Short Description">
+                                    </div>
+                                </div>
+                                
+                                <!--Cuisines-->
+                                <div class="row">
+                                  <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">map</i>
+                                    <select id="cuisine_name" name="cuisine_name">
+                                      <option value="" disabled selected>Select Cuisine</option>
+                                          {% for cuisine in cuisines %}
+                                             <option value="{{cuisine.name}}">{{cuisine.name}}</option>
+                                          {% endfor %}
+                                    </select>
+                                  </div>
+
+                                 <!--Allergens-->
+                                  <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">priority_high</i>
+                                    <select multiple id="allergen_name" name="allergen_name">
+                                        <option value="" disabled selected>Select Allergens</option>
+                                            {% for allergy in allergens %}
+                                                <option value="{{allergy.name}}">{{allergy.name}}</option>
+                                            {% endfor %}
+                                    </select>
+                                  </div>
+                                </div>
+                                
+                                    <!--Cooking Time-->
+                                <div class="row">
+                                      <div class="input-field col s12 m6">
+                                        <label for="cooking_time"><i class="material-icons prefix">schedule</i></label>
+                                        <input id="cooking_time" name="cooking_time" type="text" class="timepicker" placeholder="Cooking Time">
+                                      </div>
+                                    <!--Preparation Time-->
+                                      <div class="input-field col s12 m6">
+                                        <label for=preparation_time><i class="material-icons prefix">schedule</i></label>
+                                        <input id="prep_time" name="prep_time" type="text" class="timepicker" placeholder="Prepartion Time"/>
+                                      </div>
+                                </div>
+                                
+                                 <!--Serves-->
+                                <div class="form-group row">
+                                    <label for="serves" class="col-md-4 col-form-label text-md-right"><i class="material-icons">local_dining</i></label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="serves" class="validate" placeholder="Servings Count">
+                                    </div>
+                                </div>
+                                
+                                 <!--Image Link-->
+                                <div class="form-group row">
+                                    <label for="image_link" class="col-md-4 col-form-label text-md-right"><i class="material-icons">insert_link</i></label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="image_link" class="validate" placeholder="Image Link" >
+                                    </div>
+                                </div>
+                                
+                                <!--Ingredients-->
+                                <div class="form-group row">
+                                    <label for="ingredients" class="col-md-4 col-form-label text-md-right"><i class="material-icons prefix">mode_edit</i></label>
+                                    <div class="col-md-6">
+                                        <textarea class="materialize-textarea form-control" name="ingredients" class="validate" placeholder="List of Ingredients &#10;Enter one ingredient on each line &#10;Ingredients Example: 2 tsp cumin seeds" ></textarea>
+                                    </div>
+                                </div>
+                                
+                                <!--Method-->
+                                <div class="form-group row">
+                                    <label for="method" class="col-md-4 col-form-label text-md-right"><i class="material-icons">format_list_numbered</i></label>
+                                    <div class="col-md-6">
+                                        <textarea class="materialize-textarea form-control" name="method" class="validate" placeholder="Steps &#10;Enter each step on each line &#10;Example: 1.Heat a large saucepan and dry-fry 2 tsp cumin seeds.." ></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-info btn-block" name="action" onclick="{{ url_for( 'insert_recipe')}}">
+                                        Add Recipe
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<br/>
+{% endblock %}
